@@ -1,0 +1,116 @@
+= Appendix: Fulcro Errors and Warnings, Explained
+
+////
+{:error [{:level :error, :file "application", :line 71, :log "`e` Cannot compute shared"} {:level :error, :file "application", :line 138, :log "`e` Render listener failed."} {:level :error, :file "application", :line 393, :log "Mount cannot find DOM node `node` to mount `(comp/class->registry-key root)`"} {:level :error, :file "inspect_client", :line 35, :log "Cannot send to inspect. Channel closed."} {:level :error, :file "inspect_client", :line 248, :log "Transact on invalid uuid `app-uuid`"} {:level :error, :file "inspect_client", :line 256, :log "Element picker not installed in app. You must add it to you preloads."} {:level :error, :file "inspect_client", :line 268, :log "Unable to find app/state for preview."} {:level :error, :file "mutations", :line 234, :log "ui/set-props requires component to have an ident."} {:level :error, :file "mutations", :line 243, :log "ui/toggle requires component to have an ident."} {:level :error, :file "mutations", :line 247, :log "Unknown app state mutation. Have you required the file with your mutations? `(:key ast)`"} {:level :error, :file "file_upload", :line 37, :log "Unable to associate a file with a mutation `file`"} {:level :error, :file "file_upload", :line 50, :log "`e` Unable to attach uploads to the transaction."} {:level :error, :file "file_upload", :line 79, :log "Incoming transaction with uploads had no files attached."} {:level :error, :file "file_upload", :line 112, :log "`e` Exception while converting mutation with file uploads."} {:level :error, :file "mock_server_remote", :line 22, :log "`e` Result handler failed with an exception."} {:level :error, :file "mock_server_remote", :line 27, :log "`e` Error handler failed with an exception."} {:level :error, :file "http_remote", :line 122, :log "Attempt to request alternate response from HTTP remote from multiple items in a single transaction. This could mean more than one transaction got combined into a single request."} {:level :error, :file "http_remote", :line 202, :log "Unable to extract response from XhrIO Object `e`"} {:level :error, :file "http_remote", :line 233, :log "Client response middleware threw an exception.  `e` . Defaulting to raw response."} {:level :error, :file "http_remote", :line 255, :log "Client middleware threw an exception `middleware-exception`"} {:level :error, :file "http_remote", :line 336, :log "`e` Result handler for remote `url` failed with an exception."} {:level :error, :file "http_remote", :line 347, :log "`e` Update handler for remote `url` failed with an exception."} {:level :error, :file "http_remote", :line 351, :log "`(ex-info \"Remote Error\" error)`"} {:level :error, :file "http_remote", :line 354, :log "`e` Error handler for remote `url` failed with an exception."} {:level :error, :file "http_remote", :line 358, :log "`e` Send aborted due to middleware failure "} {:level :error, :file "merge", :line 163, :log "`e` Unable to mark missing on result. Returning unmarked result"} {:level :error, :file "merge", :line 425, :log "Cannot merge component  `component`  because it does not have an ident!"} {:level :error, :file "merge", :line 461, :log "merge-component!: component must implement Ident. Merge skipped."} {:level :error, :file "form_state", :line 533, :log "`(str \"FORM NOT NORMALIZED: \" entity-ident)`"} {:level :error, :file "form_state", :line 554, :log "`(str \"FORM NOT NORMALIZED: \" entity-ident)`"} {:level :error, :file "synchronous_tx_processing", :line 137, :log "`e` Post processing step failed."} {:level :error, :file "synchronous_tx_processing", :line 169, :log "`e` The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception."} {:level :error, :file "synchronous_tx_processing", :line 212, :log "Network result for `remote` does not have a valid node on the active queue!"} {:level :error, :file "synchronous_tx_processing", :line 328, :log "Old queue changed!"} {:level :error, :file "synchronous_tx_processing", :line 361, :log "`e` Error processing tx queue!"} {:level :error, :file "tx_processing", :line 154, :log "`e` Send threw an exception for tx: `(futil/ast->query (:com.fulcrologic.fulcro.algorithms.tx-processing/ast send-node))`"} {:level :error, :file "tx_processing", :line 163, :log "Transmit was not defined on remote `remote-name`"} {:level :error, :file "tx_processing", :line 247, :log "`e` Dispatch for mutation `(some-> env :ast futil/ast->query)` failed with an exception. No dispatch generated."} {:level :error, :file "tx_processing", :line 340, :log "`e` The `action` section of mutation `mutation-symbol` threw an exception."} {:level :error, :file "tx_processing", :line 373, :log "`e` The `action` section threw an exception for mutation:  `(:dispatch-key original-ast-node)`"} {:level :error, :file "tx_processing", :line 421, :log "Network result for `remote` does not have a valid node on the active queue!"} {:level :error, :file "tx_processing", :line 442, :log "Remote dispatch for `remote` returned an invalid value. `remote-desire`"} {:level :error, :file "tx_processing", :line 574, :log "`e` The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception."} {:level :error, :file "tx_processing", :line 614, :log "`e` Progress action threw an exception in mutation `(:dispatch-key original-ast-node)`"} {:level :error, :file "tx_processing", :line 821, :log "Cannot abort network requests. The remote has no abort support!"} {:level :error, :file "tx_processing", :line 867, :log "`e` Failed to abort send node"} {:level :error, :file "react_interop", :line 59, :log "The first argument to an HOC factory MUST be the parent component instance."} {:level :error, :file "react_interop", :line 85, :log "hoc-factory MUST be used with a Fulcro Class"} {:level :error, :file "indexing", :line 101, :log "Component `(comp/component-name this)` supplied an invalid ident `ident` using props `props`"} {:level :error, :file "indexing", :line 138, :log "Unable to re-index root. App was not set in the mutation env."} {:level :error, :file "data_targeting", :line 93, :log "Replacement path must be a vector. You passed:  `data-path`"} {:level :error, :file "data_targeting", :line 96, :log "Path for replacement must be a vector"} {:level :error, :file "data_targeting", :line 97, :log "Path for replacement must end in a vector index"} {:level :error, :file "data_targeting", :line 98, :log "Target vector for replacement does not have an item at index  `index`"} {:level :error, :file "do_not_use", :line 163, :log "`(str \"The composed root query is not valid EQL. The app may crash. See `(comp/get-query \" (some-> query meta :component component-name-fn) \")`\")` `query`"} {:level :error, :file "api_middleware", :line 72, :log "`e` Parser threw an exception on `query`"} {:level :error, :file "config", :line 58, :log "Unable to read configuration file  `file-path`"} {:level :error, :file "components", :line 515, :log "Cannot create proper fulcro component, as *app* isn't bound. This happens when something renders a Fulcro component outside of Fulcro's render context. See `with-parent-context`."} {:level :error, :file "components", :line 660, :log "Query ID received no class (if you see this warning, it probably means metadata was lost on your query) `(ex-info \"\" {})`"} {:level :error, :file "components", :line 863, :log "A Fulcro component was rendered outside of a parent context. This probably means you are using a library that has you pass rendering code to it as a lambda. Use `with-parent-context` to fix this."} {:level :error, :file "components", :line 871, :log "Props middleware seems to have the corrupted props for  `(component-name class)`"} {:level :error, :file "components", :line 874, :log "Props passed to `(component-name class)` are of the type `(type (gobj/get props \"fulcro$value\"))` instead of a map. Perhaps you meant to `map` the component over the props?"} {:level :error, :file "components", :line 1021, :log "`e` Query normalization failed. Perhaps you tried to set a query with a syntax error?"} {:level :error, :file "components", :line 1077, :log "Set query failed. There was no query ID. Use a class or factory for the second argument."} {:level :error, :file "components", :line 1102, :log "Unable to set query. Invalid arguments."} {:level :error, :file "components", :line 1113, :log "Unable to set query. Invalid arguments."} {:level :error, :file "components", :line 1729, :log "Cannot re-render a non-component"} {:level :error, :file "ui_state_machines", :line 135, :log "Invalid (nil) event ID"} {:level :error, :file "ui_state_machines", :line 239, :log "Activate called for invalid state:  `state-id` on `(asm-id env)`"} {:level :error, :file "ui_state_machines", :line 314, :log "Unable to find alias in state machine: `alias`"} {:level :error, :file "ui_state_machines", :line 332, :log "Attempt to set a value on an invalid alias: `alias`"} {:level :error, :file "ui_state_machines", :line 562, :log "Cannot run load. Counld not derive Fulcro class (and none was configured) for  `actor-name`"} {:level :error, :file "ui_state_machines", :line 571, :log "Cannot run load. query-key cannot be nil."} {:level :error, :file "ui_state_machines", :line 729, :log "INTERNAL ERROR: Cancel predicate was nil for timer  `timer-id`"} {:level :error, :file "ui_state_machines", :line 765, :log "Attempted to trigger event  `event-id` on state machine `asm-id` , but that state machine has not been started (call begin! first)."} {:level :error, :file "ui_state_machines", :line 773, :log "`e` Handler for event `event-id` threw an exception for ASM ID `asm-id`"} {:level :error, :file "ui_state_machines", :line 866, :log "The value given for actor `actor-id` had (or was) an invalid ident: `v`"} {:level :error, :file "icons", :line 1015, :log "ui-icon was given an icon name that cannot be found:  `icon`"} {:level :error, :file "ident_optimized_render", :line 42, :log "Query was empty. Refresh failed for  `(type c)`"} {:level :error, :file "multiple_roots_renderer", :line 92, :log "Register-root cannot find app. Pass your Fulcro app via options."} {:level :error, :file "multiple_roots_renderer", :line 105, :log "Deregister-root cannot find app. Pass your Fulcro app via options."} {:level :error, :file "legacy_ui_routers", :line 192, :log "Routing tree does not contain a vector of routing-instructions for handler  `handler`"} {:level :error, :file "legacy_ui_routers", :line 208, :log "Routing tree does not contain a vector of routing-instructions for handler  `handler`"} {:level :error, :file "legacy_ui_routers", :line 346, :log "`(str \"Route load failed for \" route-to-load \". Attempting retry.\")`"} {:level :error, :file "legacy_ui_routers", :line 379, :log "Attempt to trigger a route that was pending, but that wasn't done loading (or failed to load)."} {:level :error, :file "legacy_ui_routers", :line 424, :log "Routing failed! `t`"} {:level :error, :file "dynamic_routing", :line 69, :log "Component must have an ident for routing to work properly: `(comp/component-name class)`"} {:level :error, :file "dynamic_routing", :line 113, :log "Cannot evalutate route change. Assuming ok. Exception message:  `(ex-message e)`"} {:level :error, :file "dynamic_routing", :line 133, :log "`fn-name`  was invoked with the ident  `ident`  which doesn't seem to match the ident of the wrapping component (class  `*target-class*`  , ident [ `(first (comp/ident *target-class* {}))`  ...])"} {:level :error, :file "dynamic_routing", :line 154, :log "apply-route* was called without a proper :router argument."} {:level :error, :file "dynamic_routing", :line 156, :log "apply-route* for router  `router-class` was given a target that did not have a component.  Did you remember to call route-deferred or route-immediate?"} {:level :error, :file "dynamic_routing", :line 167, :log "There is a router in state that is missing an ID. This indicates that you forgot to compose it into your initial state! It will fail to operate properly."} {:level :error, :file "dynamic_routing", :line 185, :log "`(quote com.fulcrologic.fulcro.routing.dynamic-routing/target-ready)` should route to `target` but there is no data in the DB for the ident. Perhaps you supplied a wrong ident?"} {:level :error, :file "dynamic_routing", :line 188, :log "dr/target-ready! was called but there was no router waiting for the target listed:  `target` This could mean you sent one ident, and indicated ready on another."} {:level :error, :file "dynamic_routing", :line 411, :log "will-enter for router target `(comp/component-name target)` did not return a valid ident. Instead it returned:  `target-ident`"} {:level :error, :file "dynamic_routing", :line 414, :log "will-enter for router target `(comp/component-name target)` did not wrap the ident in route-immediate or route-deferred."} {:level :error, :file "dynamic_routing", :line 636, :log "Could not find route targets for new-route `new-route`"} {:level :error, :file "dynamic_routing", :line 684, :log "You are routing to a router  `router-id` whose state was not composed into the app from root. Please check your :initial-state."} {:level :error, :file "dynamic_routing", :line 752, :log "Route target  `(comp/component-name t)` of router `(comp/component-name router-instance)` does not declare a valid :route-segment. Route segments must be non-empty vector that contain only strings and keywords"} {:level :error, :file "error_boundaries", :line 31, :log "`(ex-message error)`"} {:level :error, :file "durable_mutations", :line 122, :log "Save failed. Running transaction now, non-durably."} {:level :error, :file "durable_mutations", :line 183, :log "The transaction that submitted this mutation did not assign it a persistent store ID. This probably means you did not submit it as a durable mutation."} {:level :error, :file "durable_mutations", :line 198, :log "INTERNAL ERROR: TXN ID MISSING!"} {:level :error, :file "durable_mutations", :line 210, :log "Failed to update durable mutation!"} {:level :error, :file "load_cache", :line 122, :log "Load failed. Using cached value."} {:level :error, :file "load_cache", :line 221, :log "LOAD CACHE NOT INSTALLED! Did you remember to use `with-load-cache` on your app?"} {:level :error, :file "browser_edn_store", :line 23, :log "`e` Local storage denied. `edn`"} {:level :error, :file "browser_edn_store", :line 32, :log "`e` Cannot list items in storage."} {:level :error, :file "browser_edn_store", :line 44, :log "`e` Cannot list items in storage."} {:level :error, :file "browser_edn_store", :line 52, :log "`e` Load failed."} {:level :error, :file "browser_edn_store", :line 66, :log "`e` Delete failed."} {:level :error, :file "browser_edn_store", :line 76, :log "`e` Cannot update edn."}], :warn [{:level :warn, :file "application", :line 428, :log "Cannot umount application because either the umount function is missing or the node was not recorded. Perhaps it wasn't mounted?"} {:level :warn, :file "transit", :line 20, :log "Transit was unable to encode a value."} {:level :warn, :file "dom", :line 181, :log "There is a mismatch for the data type of the value on an input with value  `element-value` . This will cause the input to miss refreshes. In general you should force the :value of an input to\n                be a string since that is how values are stored on most real DOM elements."} {:level :warn, :file "tenacious_remote", :line 28, :log "Tenacious remote exceeded retry limit `max-attempts`"} {:level :warn, :file "http_remote", :line 184, :log "Transit decode failed!"} {:level :warn, :file "tx_processing", :line 743, :log "Synchronous transaction was submitted on the app or a component without an ident. No UI refresh will happen."} {:level :warn, :file "tx_processing", :line 861, :log "Remote does not support abort. Clearing the queue, but a spurious result may still appear."} {:level :warn, :file "denormalize", :line 102, :log "Loop detected in data graph at  `entity` . Recursive query stopped."} {:level :warn, :file "denormalize", :line 117, :log "Loop detected in data graph at  `e` . Recursive query stopped."} {:level :warn, :file "data_targeting", :line 152, :log "Target processing found an unsupported case."} {:level :warn, :file "components", :line 626, :log "get-ident was invoked on  `(component-name x)`  with nil props (this could mean it wasn't yet mounted):  `x`"} {:level :warn, :file "components", :line 631, :log "get-ident returned an invalid ident: `id` `(:displayName (component-options class))`"} {:level :warn, :file "components", :line 634, :log "get-ident called with something that is either not a class or does not implement ident:  `class`"} {:level :warn, :file "components", :line 865, :log "React key for  `(component-name class)`  is not a simple scalar value. This could cause spurious component remounts."} {:level :warn, :file "components", :line 868, :log "String ref on  `(component-name class)`  should be a function."} {:level :warn, :file "components", :line 1759, :log "Component `(component-name c)` has a constant ident (id in the ident is not nil for empty props), but it has no initial state. This could cause this component's props to appear as nil unless you have a mutation or load that connects it to the graph after application startup."} {:level :warn, :file "components", :line 1774, :log "Component `(component-name c)` does not INCLUDE initial state for `(component-name target)` at join key `k` ; however,  `(component-name target)` HAS initial state. This probably means your initial state graph is incomplete and props on `(component-name target)` will be nil."} {:level :warn, :file "data_fetch", :line 62, :log "Unions are not designed to be used with fewer than two children. Check your calls to Fulcro\n        load functions where the :without set contains  `(pr-str union-key)`"} {:level :warn, :file "data_fetch", :line 100, :log "Boolean load marker no longer supported."} {:level :warn, :file "data_fetch", :line 104, :log "Data load targets of two elements imply that you are targeting a table entry. That is probably incorrect. Normalization targets tables. Targeting is for creating missing edges, which are usually 3-tuples."} {:level :warn, :file "data_fetch", :line 286, :log "Query-transform-default is a dangerous option that can break general merge behaviors. Do not use it."} {:level :warn, :file "ui_state_machines", :line 215, :log "`(ex-info \"\" {})` Attempt to get an ASM path `ks` for a state machine that is not in Fulcro state. ASM ID:  `asm-id`"} {:level :warn, :file "ui_state_machines", :line 583, :log "A fallback occurred, but no event was defined by the client. Sending generic ::uism/load-error event."} {:level :warn, :file "ui_state_machines", :line 684, :log "UNEXPECTED EVENT: Did not find a way to handle event `event-id` in the current active state: `current-state`"} {:level :warn, :file "dynamic_routing", :line 103, :log "DEPRECATED USE OF `:will-leave` to check for allowable routing. You should add :allow-route-change? to:  `(comp/component-name this)`"} {:level :warn, :file "dynamic_routing", :line 263, :log "More than one route target matches `path`"} {:level :warn, :file "durable_mutations", :line 299, :log "Write-through transactions with multiple mutations will be rewritten to submit one per mutation."}]}
+////
+
+== Warnings
+
+=== application
+
+[[Wap0]]Cannot umount application because either the umount function is missing or the node was not recorded. Perhaps it wasn't mounted?::
+TODO
+
+=== components
+
+[[Wco0]]get-ident was invoked on  `(component-name x)`  with nil props (this could mean it wasn't yet mounted):  `x`::
+TODO
+
+[[Wco1]]get-ident returned an invalid ident: `id` `(:displayName (component-options class))`::
+TODO
+
+[[Wco2]]get-ident called with something that is either not a class or does not implement ident:  `class`::
+TODO
+
+[[Wco3]]React key for  `(component-name class)`  is not a simple scalar value. This could cause spurious component remounts.::
+TODO
+
+[[Wco4]]String ref on  `(component-name class)`  should be a function.::
+TODO
+
+[[Wco5]]Component `(component-name c)` has a constant ident (id in the ident is not nil for empty props), but it has no initial state. This could cause this component's props to appear as nil unless you have a mutation or load that connects it to the graph after application startup.::
+TODO
+
+[[Wco6]]Component `(component-name c)` does not INCLUDE initial state for `(component-name target)` at join key `k` ; however,  `(component-name target)` HAS initial state. This probably means your initial state graph is incomplete and props on `(component-name target)` will be nil.::
+TODO
+
+=== data_fetch
+
+[[Wdafe0]]Unions are not designed to be used with fewer than two children. Check your calls to Fulcro
+        load functions where the :without set contains  `(pr-str union-key)`::
+TODO
+
+[[Wdafe1]]Boolean load marker no longer supported.::
+TODO
+
+[[Wdafe2]]Data load targets of two elements imply that you are targeting a table entry. That is probably incorrect. Normalization targets tables. Targeting is for creating missing edges, which are usually 3-tuples.::
+TODO
+
+[[Wdafe3]]Query-transform-default is a dangerous option that can break general merge behaviors. Do not use it.::
+TODO
+
+=== data_targeting
+
+[[Wdata0]]Target processing found an unsupported case.::
+TODO
+
+=== denormalize
+
+[[Wde0]]Loop detected in data graph at  `entity` . Recursive query stopped.::
+TODO
+
+[[Wde1]]Loop detected in data graph at  `e` . Recursive query stopped.::
+TODO
+
+=== dom
+
+[[Wdo0]]There is a mismatch for the data type of the value on an input with value  `element-value` . This will cause the input to miss refreshes. In general you should force the :value of an input to
+                be a string since that is how values are stored on most real DOM elements.::
+TODO
+
+=== durable_mutations
+
+[[Wdumu0]]Write-through transactions with multiple mutations will be rewritten to submit one per mutation.::
+TODO
+
+=== dynamic_routing
+
+[[Wdyro0]]DEPRECATED USE OF `:will-leave` to check for allowable routing. You should add :allow-route-change? to:  `(comp/component-name this)`::
+TODO
+
+[[Wdyro1]]More than one route target matches `path`::
+TODO
+
+=== http_remote
+
+[[Whtre0]]Transit decode failed!::
+TODO
+
+=== tenacious_remote
+
+[[Wtere0]]Tenacious remote exceeded retry limit `max-attempts`::
+TODO
+
+=== transit
+
+[[Wtr0]]Transit was unable to encode a value.::
+TODO
+
+=== tx_processing
+
+[[Wtxpr0]]Synchronous transaction was submitted on the app or a component without an ident. No UI refresh will happen.::
+TODO
+
+[[Wtxpr1]]Remote does not support abort. Clearing the queue, but a spurious result may still appear.::
+TODO
+
+=== ui_state_machines
+
+[[Wuistma0]]`(ex-info "" {})` Attempt to get an ASM path `ks` for a state machine that is not in Fulcro state. ASM ID:  `asm-id`::
+TODO
+
+[[Wuistma1]]A fallback occurred, but no event was defined by the client. Sending generic ::uism/load-error event.::
+TODO
+
+[[Wuistma2]]UNEXPECTED EVENT: Did not find a way to handle event `event-id` in the current active state: `current-state`::
+TODO
