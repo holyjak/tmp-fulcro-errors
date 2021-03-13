@@ -1,13 +1,15 @@
 = Appendix: Fulcro Errors and Warnings, Explained
 
-== Warnings
+== Fulcro warning and error logs
 
-=== application
+=== Warnings
+
+==== application
 
 [[cannot-unmount-application]]Cannot umount application because either the umount function is missing or the node was not recorded. Perhaps it wasn't mounted?::
 TODO
 
-=== components
+==== components
 
 [[get-ident-with-nil-props]]get-ident was invoked on  `(component-name x)`  with nil props (this could mean it wasn't yet mounted):  `x`::
 TODO
@@ -30,7 +32,7 @@ TODO
 [[initial-state-incomplete]]Component `(component-name c)` does not INCLUDE initial state for `(component-name target)` at join key `k` ; however,  `(component-name target)` HAS initial state. This probably means your initial state graph is incomplete and props on `(component-name target)` will be nil.::
 TODO
 
-=== data_fetch
+==== data_fetch
 
 [[union-needs-more-children]]Unions are not designed to be used with fewer than two children. Check your calls to Fulcro
         load functions where the :without set contains  `(pr-str union-key)`::
@@ -45,12 +47,12 @@ TODO
 [[dont-use-query-transform-default]]Query-transform-default is a dangerous option that can break general merge behaviors. Do not use it.::
 TODO
 
-=== data_targeting
+==== data_targeting
 
 [[target-unsuported-case]]Target processing found an unsupported case.::
 TODO
 
-=== denormalize
+==== denormalize
 
 [[denormalize-loop-detected]]Loop detected in data graph at  `entity` . Recursive query stopped.::
 TODO
@@ -58,18 +60,18 @@ TODO
 [[denormalize-loop-detected-2]]Loop detected in data graph at  `e` . Recursive query stopped.::
 TODO
 
-=== dom
+==== dom
 
 [[dom-type-mismatch]]There is a mismatch for the data type of the value on an input with value  `element-value` . This will cause the input to miss refreshes. In general you should force the :value of an input to
                 be a string since that is how values are stored on most real DOM elements.::
 TODO
 
-=== durable_mutations
+==== durable_mutations
 
 [[multiple-mutations-rewritten]]Write-through transactions with multiple mutations will be rewritten to submit one per mutation.::
 TODO
 
-=== dynamic_routing
+==== dynamic_routing
 
 [[routing-will-leave-deprecated]]DEPRECATED USE OF `:will-leave` to check for allowable routing. You should add :allow-route-change? to:  `(comp/component-name this)`::
 TODO
@@ -77,22 +79,22 @@ TODO
 [[routing-multiple-target-matches]]More than one route target matches `path`::
 TODO
 
-=== http_remote
+==== http_remote
 
 [[transit-decode-failed]]Transit decode failed!::
 TODO
 
-=== tenacious_remote
+==== tenacious_remote
 
 [[remote-retry-limit-exceeded]]Tenacious remote exceeded retry limit `max-attempts`::
 TODO
 
-=== transit
+==== transit
 
 [[transit-encode-failed]]Transit was unable to encode a value.::
 TODO
 
-=== tx_processing
+==== tx_processing
 
 [[tx-missing-ident]]Synchronous transaction was submitted on the app or a component without an ident. No UI refresh will happen.::
 TODO
@@ -100,7 +102,7 @@ TODO
 [[tx-remote-abort-not-supported]]Remote does not support abort. Clearing the queue, but a spurious result may still appear.::
 TODO
 
-=== ui_state_machines
+==== ui_state_machines
 
 [[uism-sm-not-in-state]]`(ex-info "" {})` Attempt to get an ASM path `ks` for a state machine that is not in Fulcro state. ASM ID:  `asm-id`::
 TODO
