@@ -2,113 +2,111 @@
 
 == Fulcro warning and error logs
 
+Explanations of the Fulcro warnings errors that you might see in the browser Console.
+
 === Warnings
 
 ==== application
 
 [[cannot-unmount-application]]Cannot umount application because either the umount function is missing or the node was not recorded. Perhaps it wasn't mounted?::
-TODO
+-
 
 ==== components
 
-[[get-ident-with-nil-props]]get-ident was invoked on  `(component-name x)`  with nil props (this could mean it wasn't yet mounted):  `x`::
-TODO
+[[get-ident-with-nil-props]]get-ident was invoked on `(component-name x)` with nil props (this could mean it wasn't yet mounted): `x`::
+It could also mean that the component is missing data in the Fulcro client DB (for example beacuse you have routed to a component without having loaded data for it) or that there is a missing "edge" somewhere between the root and this component. Use the DB Explorer in Fulcro Inspect and see whether you can navigate (click-through) from the top down to the component. See also <<_a_warning_about_ident_and_link_queries,A Warning About Ident and Link Queries>>.
 
-[[get-ident-invalid-ident]]get-ident returned an invalid ident: `id` `(:displayName (component-options class))`::
-TODO
+[[get-ident-invalid-ident]]get-ident returned an invalid ident: `id` `<component display name>`::
+An ident must be a vector of two elements, where the first one is a keyword. You can define it either via a keyword, a template, or a lambda - see <<_ident_generation,Ident Generation>>.
 
-[[get-ident-invalid-class]]get-ident called with something that is either not a class or does not implement ident:  `class`::
-TODO
+[[get-ident-invalid-class]]get-ident called with something that is either not a class or does not implement ident: `<class>`::
 
-[[react-key-not-simple-scalar]]React key for  `(component-name class)`  is not a simple scalar value. This could cause spurious component remounts.::
-TODO
+[[react-key-not-simple-scalar]]React key for `(component-name class)` is not a simple scalar value. This could cause spurious component remounts.::
+The value returned by the `:keyfn` you have defined for the component's factory should be a simple scalar such as a string or a number. React does need something that can be checked using _javascript_ equality. 
 
-[[string-ref-not-function]]String ref on  `(component-name class)`  should be a function.::
-TODO
+[[string-ref-not-function]]String ref on `(component-name class)` should be a function.::
+I.e. the props should include something like `:ref (fn [r] (gobj/set this "svg" r))`, not simply `"svg"`. See the <<D3,D3 example>>.
 
 [[constant-ident-no-initial-state]]Component `(component-name c)` has a constant ident (id in the ident is not nil for empty props), but it has no initial state. This could cause this component's props to appear as nil unless you have a mutation or load that connects it to the graph after application startup.::
-TODO
+The client DB must contain non-nil (but possibly empty) data for this component (i.e. you need to run at least `(assoc-in your-client-db <the ident>) {}`).
+Or set its `:initial-state` to at least `{}`.
 
 [[initial-state-incomplete]]Component `(component-name c)` does not INCLUDE initial state for `(component-name target)` at join key `k` ; however,  `(component-name target)` HAS initial state. This probably means your initial state graph is incomplete and props on `(component-name target)` will be nil.::
-TODO
+You need to make sure that initial state is composed up all the way to the root component, otherwise Fulcro will not "see" it. I.e. you should likely <<_initial_state_2,define
+`:initial-state`>> on this component using either the template (`{<the join key> {}}`) or lambda (`(fn [params] {<the join key> (comp/get-initial-state <target component> {}))`) form.
 
 ==== data_fetch
 
-[[union-needs-more-children]]Unions are not designed to be used with fewer than two children. Check your calls to Fulcro
-        load functions where the :without set contains  `(pr-str union-key)`::
-TODO
+[[union-needs-more-children]]Unions are not designed to be used with fewer than two children. Check your calls to Fulcro load functions where the :without set contains `(pr-str union-key)`::
+-
 
 [[boolean-marker-not-supported]]Boolean load marker no longer supported.::
-TODO
+Load marker should be a keyword unique to what you are loading, not `true`. See <<_working_with_normalized_load_markers>>.
 
 [[data-load-targets-table]]Data load targets of two elements imply that you are targeting a table entry. That is probably incorrect. Normalization targets tables. Targeting is for creating missing edges, which are usually 3-tuples.::
-TODO
+Targeting via `targeting/append-to` etc. is intended to add a connection from one entity to another so you should provide it with the triplet `<component id prop> - <id value> - prop-name` such as `[:person/id "123" :person/spouse]`. If you want to get the data inserted at the given path instead of the default one then use `:target` directly with the 2-element vector instead of using the targeting namespace. Ex.: `:target [:component/id :user-session]`.
 
 [[dont-use-query-transform-default]]Query-transform-default is a dangerous option that can break general merge behaviors. Do not use it.::
-TODO
+Use fulcro-app's `:global-eql-transform` instead.
 
 ==== data_targeting
 
 [[target-unsuported-case]]Target processing found an unsupported case.::
-TODO
+Perhaps you have not defined it using `targeting/append-to` or similar?
 
 ==== denormalize
 
 [[denormalize-loop-detected]]Loop detected in data graph at  `entity` . Recursive query stopped.::
-TODO
-
-[[denormalize-loop-detected-2]]Loop detected in data graph at  `e` . Recursive query stopped.::
-TODO
+The recursive query has hit an ident that it already has included before, which indicates a loop. If the loop is desired, use a recursive query with an explicit limit instead of just `...`. See <<_recursive_queries,Recursive Queries>> for details.
 
 ==== dom
 
-[[dom-type-mismatch]]There is a mismatch for the data type of the value on an input with value  `element-value` . This will cause the input to miss refreshes. In general you should force the :value of an input to
-                be a string since that is how values are stored on most real DOM elements.::
-TODO
+[[dom-type-mismatch]]There is a mismatch for the data type of the value on an input with value `element-value`. This will cause the input to miss refreshes. In general you should force the :value of an input to be a string since that is how values are stored on most real DOM elements.::
+-
 
 ==== durable_mutations
 
 [[multiple-mutations-rewritten]]Write-through transactions with multiple mutations will be rewritten to submit one per mutation.::
-TODO
+-
 
 ==== dynamic_routing
 
-[[routing-will-leave-deprecated]]DEPRECATED USE OF `:will-leave` to check for allowable routing. You should add :allow-route-change? to:  `(comp/component-name this)`::
-TODO
+[[routing-will-leave-deprecated]]DEPRECATED USE OF `:will-leave` to check for allowable routing. You should add :allow-route-change? to: `(comp/component-name this)`::
+-
 
 [[routing-multiple-target-matches]]More than one route target matches `path`::
-TODO
+Check the `:route-segment` of your target components.
 
 ==== http_remote
 
 [[transit-decode-failed]]Transit decode failed!::
-TODO
+The body was either not transit or you have not installed the correct transit read/write handlers. See `com.fulcrologic.fulcro.algorithms.transit/install-type-handler!` and how it is used to handle tempids.
 
 ==== tenacious_remote
 
 [[remote-retry-limit-exceeded]]Tenacious remote exceeded retry limit `max-attempts`::
-TODO
+-
 
-==== transit
+==== inspect.transit
 
 [[transit-encode-failed]]Transit was unable to encode a value.::
-TODO
+Make sure that you have installed transit write handlers for any data types not supported by default. See `com.fulcrologic.fulcro.algorithms.transit/install-type-handler!`.
 
 ==== tx_processing
 
 [[tx-missing-ident]]Synchronous transaction was submitted on the app or a component without an ident. No UI refresh will happen.::
-TODO
+Synchronous transactions will not cause a full UI refresh. It will only target refreses to the component passed as an argument, which must have an ident. If it does not, no UI will be refreshed, which likely is not what you wanted. Perhaps try to use the normal, asynchronous transaction (e.g. `transact!` instead of `transact!!` or transact! with `:synchronously? true`). See <<Inputs32,Fulcro 3.2 Inputs>>.
 
 [[tx-remote-abort-not-supported]]Remote does not support abort. Clearing the queue, but a spurious result may still appear.::
-TODO
+-
 
 ==== ui_state_machines
 
-[[uism-sm-not-in-state]]`(ex-info "" {})` Attempt to get an ASM path `ks` for a state machine that is not in Fulcro state. ASM ID:  `asm-id`::
-TODO
+[[uism-sm-not-in-state]]Attempt to get an ASM path `ks` for a state machine that is not in Fulcro state. ASM ID: `asm-id`::
+This can happen e.g. if you are rendering routers before you’ve started their associated UISMs (and is mostly harmless) - you can use `app/set-root!` with initialize state, then `dr/initialize!` or `dr/change-route!`, then `app/mount!` with NO initialize state to get rid of most or all of those. Basically: Make sure you’ve explicitly routed to a leaf (target) before mounting. In other cases - make sure the UISM has been started before you try to use it.
 
 [[uism-fallback-missing-event]]A fallback occurred, but no event was defined by the client. Sending generic ::uism/load-error event.::
-TODO
+-
 
 [[uism-unexpected-event]]UNEXPECTED EVENT: Did not find a way to handle event `event-id` in the current active state: `current-state`::
-TODO
+-
