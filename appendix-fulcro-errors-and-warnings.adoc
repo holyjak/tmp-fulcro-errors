@@ -8,38 +8,34 @@ Explanations of the Fulcro warnings errors that you might see in the browser Con
 
 ==== api_middleware
 
-[[]]`e` Parser threw an exception on `query`::
-TODO
+[[parser-errored-on-query]]Parser threw an exception on `query`::
 
 ==== application
 
-[[]]`e` Cannot compute shared::
-TODO
+[[cannot-compute-shared]] Cannot compute shared::
+-
 
-[[]]`e` Render listener failed.::
-TODO
+[[render-listener-failed]] Render listener failed.::
+-
 
-[[]]Mount cannot find DOM node `node` to mount `(comp/class->registry-key root)`::
-TODO
+[[mount-cannot-find-node]]Mount cannot find DOM node `node` to mount `(comp/class->registry-key root)`::
+Could not find a DOM element with the given ID to mount to. Perhaps your HTML is wrong?
 
 ==== browser_edn_store
 
-[[]]`e` Local storage denied. `edn`::
+[[]] Local storage denied. `edn`::
 TODO
 
-[[]]`e` Cannot list items in storage.::
+[[]] Cannot list items in storage.::
 TODO
 
-[[]]`e` Cannot list items in storage.::
+[[]] Load failed.::
 TODO
 
-[[]]`e` Load failed.::
+[[]] Delete failed.::
 TODO
 
-[[]]`e` Delete failed.::
-TODO
-
-[[]]`e` Cannot update edn.::
+[[]] Cannot update edn.::
 TODO
 
 ==== components
@@ -59,7 +55,7 @@ TODO
 [[]]Props passed to `(component-name class)` are of the type `(type (gobj/get props "fulcro$value"))` instead of a map. Perhaps you meant to `map` the component over the props?::
 TODO
 
-[[]]`e` Query normalization failed. Perhaps you tried to set a query with a syntax error?::
+[[]] Query normalization failed. Perhaps you tried to set a query with a syntax error?::
 TODO
 
 [[]]Set query failed. There was no query ID. Use a class or factory for the second argument.::
@@ -163,13 +159,13 @@ TODO
 [[]]Unable to associate a file with a mutation `file`::
 TODO
 
-[[]]`e` Unable to attach uploads to the transaction.::
+[[]] Unable to attach uploads to the transaction.::
 TODO
 
 [[]]Incoming transaction with uploads had no files attached.::
 TODO
 
-[[]]`e` Exception while converting mutation with file uploads.::
+[[]] Exception while converting mutation with file uploads.::
 TODO
 
 ==== form_state
@@ -194,19 +190,19 @@ TODO
 [[]]Client middleware threw an exception `middleware-exception`::
 TODO
 
-[[]]`e` Result handler for remote `url` failed with an exception.::
+[[]] Result handler for remote `url` failed with an exception.::
 TODO
 
-[[]]`e` Update handler for remote `url` failed with an exception.::
+[[]] Update handler for remote `url` failed with an exception.::
 TODO
 
 [[]]`(ex-info "Remote Error" error)`::
 TODO
 
-[[]]`e` Error handler for remote `url` failed with an exception.::
+[[]] Error handler for remote `url` failed with an exception.::
 TODO
 
-[[]]`e` Send aborted due to middleware failure ::
+[[]] Send aborted due to middleware failure ::
 TODO
 
 ==== icons
@@ -268,7 +264,7 @@ TODO
 
 ==== merge
 
-[[]]`e` Unable to mark missing on result. Returning unmarked result::
+[[]] Unable to mark missing on result. Returning unmarked result::
 TODO
 
 [[]]Cannot merge component  `component`  because it does not have an ident!::
@@ -279,10 +275,10 @@ TODO
 
 ==== mock_server_remote
 
-[[]]`e` Result handler failed with an exception.::
+[[]] Result handler failed with an exception.::
 TODO
 
-[[]]`e` Error handler failed with an exception.::
+[[]] Error handler failed with an exception.::
 TODO
 
 ==== multiple_roots_renderer
@@ -314,10 +310,10 @@ TODO
 
 ==== synchronous_tx_processing
 
-[[]]`e` Post processing step failed.::
+[[]] Post processing step failed.::
 TODO
 
-[[]]`e` The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception.::
+[[]] The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception.::
 TODO
 
 [[]]Network result for `remote` does not have a valid node on the active queue!::
@@ -326,24 +322,24 @@ TODO
 [[]]Old queue changed!::
 TODO
 
-[[]]`e` Error processing tx queue!::
+[[]] Error processing tx queue!::
 TODO
 
 ==== tx_processing
 
-[[]]`e` Send threw an exception for tx: `(futil/ast->query (:com.fulcrologic.fulcro.algorithms.tx-processing/ast send-node))`::
+[[]] Send threw an exception for tx: `(futil/ast->query (:com.fulcrologic.fulcro.algorithms.tx-processing/ast send-node))`::
 TODO
 
 [[]]Transmit was not defined on remote `remote-name`::
 TODO
 
-[[]]`e` Dispatch for mutation `(some-> env :ast futil/ast->query)` failed with an exception. No dispatch generated.::
+[[]] Dispatch for mutation `(some-> env :ast futil/ast->query)` failed with an exception. No dispatch generated.::
 TODO
 
-[[]]`e` The `action` section of mutation `mutation-symbol` threw an exception.::
+[[]] The `action` section of mutation `mutation-symbol` threw an exception.::
 TODO
 
-[[]]`e` The `action` section threw an exception for mutation:  `(:dispatch-key original-ast-node)`::
+[[]] The `action` section threw an exception for mutation:  `(:dispatch-key original-ast-node)`::
 TODO
 
 [[]]Network result for `remote` does not have a valid node on the active queue!::
@@ -352,16 +348,16 @@ TODO
 [[]]Remote dispatch for `remote` returned an invalid value. `remote-desire`::
 TODO
 
-[[]]`e` The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception.::
+[[]] The result-action mutation handler for mutation `(:dispatch-key original-ast-node)` threw an exception.::
 TODO
 
-[[]]`e` Progress action threw an exception in mutation `(:dispatch-key original-ast-node)`::
+[[]] Progress action threw an exception in mutation `(:dispatch-key original-ast-node)`::
 TODO
 
 [[]]Cannot abort network requests. The remote has no abort support!::
 TODO
 
-[[]]`e` Failed to abort send node::
+[[]] Failed to abort send node::
 TODO
 
 ==== ui_state_machines
@@ -390,7 +386,7 @@ TODO
 [[]]Attempted to trigger event  `event-id` on state machine `asm-id` , but that state machine has not been started (call begin! first).::
 TODO
 
-[[]]`e` Handler for event `event-id` threw an exception for ASM ID `asm-id`::
+[[]] Handler for event `event-id` threw an exception for ASM ID `asm-id`::
 TODO
 
 [[]]The value given for actor `actor-id` had (or was) an invalid ident: `v`::
