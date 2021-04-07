@@ -23,76 +23,68 @@ Could not find a DOM element with the given ID to mount to. Perhaps your HTML is
 
 ==== browser_edn_store
 
-[[]] Local storage denied. `edn`::
-TODO
+[[edn-store-denied]] Local storage denied. `edn`::
+-
 
-[[]] Cannot list items in storage.::
-TODO
+[[edn-store-list-failed]] Cannot list items in storage.::
+-
 
-[[]] Load failed.::
-TODO
+[[edn-store-load-failed]] Load failed.::
+-
 
-[[]] Delete failed.::
-TODO
+[[edn-store-delete-failed]] Delete failed.::
+-
 
-[[]] Cannot update edn.::
-TODO
+[[edn-store-update-failed]] Cannot update edn.::
+-
 
 ==== components
 
-[[]]Cannot create proper fulcro component, as *app* isn't bound. This happens when something renders a Fulcro component outside of Fulcro's render context. See `with-parent-context`.::
-TODO
+[[comp-app-not-bound]]Cannot create proper fulcro component, as *app* isn't bound. This happens when something renders a Fulcro component outside of Fulcro's render context. See `with-parent-context`.::
+This can happen for example when you want a third-party component to render a Fulcro component. Wrap it with `with-parent-context` to preserve the important data.
 
-[[]]Query ID received no class (if you see this warning, it probably means metadata was lost on your query) `(ex-info "" {})`::
-TODO
+[[comp-query-id-no-class]]Query ID received no class (if you see this warning, it probably means metadata was lost on your query)::
+-
 
-[[]]A Fulcro component was rendered outside of a parent context. This probably means you are using a library that has you pass rendering code to it as a lambda. Use `with-parent-context` to fix this.::
-TODO
+[[comp-rendered-outside-parent-ctx]]A Fulcro component was rendered outside of a parent context. This probably means you are using a library that has you pass rendering code to it as a lambda. Use `with-parent-context` to fix this.::
+-
 
-[[]]Props middleware seems to have the corrupted props for  `(component-name class)`::
-TODO
+[[comp-props-middleware-corrupts]]Props middleware seems to have corrupted props for `(component-name class)`::
+Check what the props produced by the middleware are. They must not be nil.
 
-[[]]Props passed to `(component-name class)` are of the type `(type (gobj/get props "fulcro$value"))` instead of a map. Perhaps you meant to `map` the component over the props?::
-TODO
+[[comp-props-not-a-map]]Props passed to `(component-name class)` are of the type `<type>` instead of a map. Perhaps you meant to `map` the component over the props?::
+Props must be a map but isn't. Look at the code in the parent component and its props. Perhaps the value is actually a vector of maps (such as "people") and you should map this component over it?
 
-[[]] Query normalization failed. Perhaps you tried to set a query with a syntax error?::
-TODO
+[[comp-q-norm-failed]] Query normalization failed. Perhaps you tried to set a query with a syntax error?::
+-
 
-[[]]Set query failed. There was no query ID. Use a class or factory for the second argument.::
-TODO
+[[comp-set-q-failed]]Set query failed. There was no query ID. Use a class or factory for the second argument.::
+-
 
-[[]]Unable to set query. Invalid arguments.::
-TODO
+[[comp-unable-set-q]]Unable to set query. Invalid arguments.::
+-
 
-[[]]Unable to set query. Invalid arguments.::
-TODO
-
-[[]]Cannot re-render a non-component::
-TODO
+[[comp-cannot-rerender-non-comp]]Cannot re-render a non-component::
+The argument passed to `refresh-component!` should be a Fulcro component but is not.
 
 ==== config
 
-[[]]Unable to read configuration file  `file-path`::
-TODO
+[[config-file-read-err]]Unable to read configuration file  `file-path`::
+-
 
 ==== data_targeting
 
-[[]]Replacement path must be a vector. You passed:  `data-path`::
-TODO
+[[targ-repl-path-not-vec]]Replacement path must be a vector. You passed:  `data-path`::
+The `target` passed to `replace-at` must be a vector (path) in the normalized database of the to-many list of idents.
 
-[[]]Path for replacement must be a vector::
-TODO
+[[targ-multi-repl-must-be-vec]]Path for replacement must be a vector::
+When using `replace-at` to target a to-many prop then the value of this prop should be a vector but it is not. Example: `[:person/id "123" :person/kids 0]` to replace the 0th element in the vector under `:person/kids`.
 
-[[]]Path for replacement must end in a vector index::
-TODO
+[[targ-multi-repl-must-end-with-idx]]Path for replacement must end in a vector index::
+When using `replace-at` to target a to-many prop (which is a vector), then the last element of the path should be a number index into the vector. Example: `[:person/id "123" :person/kids 0]`.
 
-[[]]Target vector for replacement does not have an item at index  `index`::
-TODO
-
-==== do_not_use
-
-[[]]`(str "The composed root query is not valid EQL. The app may crash. See `(comp/get-query " (some-> query meta :component component-name-fn) ")`")` `query`::
-TODO
+[[targ-multi-repl-no-such-idx]]Target vector for replacement does not have an item at index  `index`::
+You have used `replace-at` to target an element under a to-many prop (which is a vector) but there is no such element. Perhaps the target vector is shorter than you expected. Check your data.
 
 ==== durable_mutations
 
