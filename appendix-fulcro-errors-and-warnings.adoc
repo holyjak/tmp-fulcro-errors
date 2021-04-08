@@ -88,63 +88,58 @@ You have used `replace-at` to target an element under a to-many prop (which is a
 
 ==== durable_mutations
 
-[[]]Save failed. Running transaction now, non-durably.::
-TODO
+[[dm-save-failed]]Save failed. Running transaction now, non-durably.::
+-
 
-[[]]The transaction that submitted this mutation did not assign it a persistent store ID. This probably means you did not submit it as a durable mutation.::
-TODO
+[[dm-missing-store-id]]The transaction that submitted this mutation did not assign it a persistent store ID. This probably means you did not submit it as a durable mutation.::
+-
 
-[[]]INTERNAL ERROR: TXN ID MISSING!::
-TODO
+[[dm-int-txn-id-missing]]INTERNAL ERROR: TXN ID MISSING!::
+-
 
-[[]]Failed to update durable mutation!::
-TODO
+[[dm-update-failed]]Failed to update durable mutation!::
+-
 
 ==== dynamic_routing
 
-[[]]Component must have an ident for routing to work properly: `(comp/component-name class)`::
-TODO
+[[dr-comp-needs-ident]]Component must have an ident for routing to work properly: `(comp/component-name class)`::
+If you want to use a component as a router target, it needs to have an ident.
 
-[[]]Cannot evalutate route change. Assuming ok. Exception message:  `(ex-message e)`::
-TODO
+[[dr-cant-eval-route-chng]]Cannot evalutate route change. Assuming ok. Exception message:  `(ex-message e)`::
+-
 
-[[]]`fn-name`  was invoked with the ident  `ident`  which doesn't seem to match the ident of the wrapping component (class  `*target-class*`  , ident [ `(first (comp/ident *target-class* {}))`  ...])::
-TODO
+[[dr-ident-mismatch]]<route-immediate|deferred> was invoked with the ident `ident` which doesn't seem to match the ident of the wrapping component (class  `*target-class*`  , ident ...)::
+The ident that you pass to `route-immediate` or `route-deferred` must match the ident of the wrapping component, where the `:will-enter` is defined. Check your code.
 
-[[]]apply-route* was called without a proper :router argument.::
-TODO
+[[dr-apply-route-lacks-router]]apply-route* was called without a proper :router argument.::
+-
 
-[[]]apply-route* for router  `router-class` was given a target that did not have a component.  Did you remember to call route-deferred or route-immediate?::
-TODO
+[[dr-apply-route-no-component]]apply-route* for router `router-class` was given a target that did not have a component. Did you remember to call route-deferred or route-immediate?::
+The `target` passed to the `apply-route` mutation needs to metadata containing the key `:component`, containing the class of the target.
 
-[[]]There is a router in state that is missing an ID. This indicates that you forgot to compose it into your initial state! It will fail to operate properly.::
-TODO
+[[dr-router-missing-id]]There is a router in state that is missing an ID. This indicates that you forgot to compose it into your initial state! It will fail to operate properly.::
+Routers require that their initial state is composed to the parent component (i.e. it defines `:initial-state` in lambda form with `(comp/get-initial-state <the router>)` or in the template form) and so on all the way up to the root. If the parent of the router is loaded dynamically (i.e. it is not in the client DB during the initial render) then you must make sure to include the router's data in it manually, typically with ``:pre-merge`. See <<_initial_state_3,(Router) Initial State>>.
 
-[[]]`(quote com.fulcrologic.fulcro.routing.dynamic-routing/target-ready)` should route to `target` but there is no data in the DB for the ident. Perhaps you supplied a wrong ident?::
-TODO
+[[dr-target-ready-missing-data]]`target-ready` should route to `target` but there is no data in the DB for the ident. Perhaps you supplied a wrong ident?::
+Target components are expected to have non-nil state in the client DB. Check whether the ident you provided is correct and use Fulcro Inspect to see what data is in the DB for the ident.
 
-[[]]dr/target-ready! was called but there was no router waiting for the target listed:  `target` This could mean you sent one ident, and indicated ready on another.::
-TODO
+[[dr-target-ready-no-router-waiting]]`target-ready!` was called but there was no router waiting for the target listed: `target` This could mean you sent one ident, and indicated ready on another.::
+Make sure that the ident you provided to `route-deferred` matches exactly the one provided to `target-ready[!]`. You can also check the routers in the DB and see their pending routes under `::dr/id ::dr/pending-route :target`.
 
-[[]]will-enter for router target `(comp/component-name target)` did not return a valid ident. Instead it returned:  `target-ident`::
-TODO
+[[dr-will-enter-invalid-ident]]will-enter for router target `(comp/component-name target)` did not return a valid ident. Instead it returned: `target-ident`::
+The ident provided to `route-immediate` / `route-deferred` is not a valid ident, i.e. a vector of two elements where the first one is a keyword and the second one is not nil.
 
-[[]]will-enter for router target `(comp/component-name target)` did not wrap the ident in route-immediate or route-deferred.::
-TODO
+[[dr-will-enter-missing-metadata]]will-enter for router target `(comp/component-name target)` did not wrap the ident in route-immediate or route-deferred.::
+`:will-enter` must return either `(route-immediate ...)` or `(route-deferred ...)` and not just an ident.
 
-[[]]Could not find route targets for new-route `new-route`::
-TODO
+[[dr-new-route-target-not-found]]Could not find route targets for new-route `new-route`::
+The `new-route` provided to `change-route-relative!` does not point to router target(s) relative to the given starting class. Look at your tree of components starting at that class and look at the route segments of the targets under it. 
 
-[[]]You are routing to a router  `router-id` whose state was not composed into the app from root. Please check your :initial-state.::
-TODO
+[[dr-router-state-missing]]You are routing to a router `router-id` whose state was not composed into the app from root. Please check your :initial-state.::
+Routers require that their initial state is composed to the parent component (i.e. it defines `:initial-state` in lambda form with `(comp/get-initial-state <the router>)` or in the template form) and so on all the way up to the root. If the parent of the router is loaded dynamically (i.e. it is not in the client DB during the initial render) then you must make sure to include the router's data in it manually, typically with ``:pre-merge`. See <<_initial_state_3,(Router) Initial State>>. Also make sure that the application has been initialized before you tried to route - see <<_setting_the_route_early,Setting the Route Early>>.
 
-[[]]Route target  `(comp/component-name t)` of router `(comp/component-name router-instance)` does not declare a valid :route-segment. Route segments must be non-empty vector that contain only strings and keywords::
-TODO
-
-==== error_boundaries
-
-[[]]`(ex-message error)`::
-TODO
+[[dr-target-lacks-r-segment]]Route target `(comp/component-name t)` of router `(comp/component-name router-instance)` does not declare a valid :route-segment. Route segments must be non-empty vector that contain only strings and keywords::
+Check the `:route-segment` of the component and see <<_routing_targets>>.
 
 ==== file_upload
 
