@@ -143,122 +143,116 @@ Check the `:route-segment` of the component and see <<_routing_targets>>.
 
 ==== file_upload
 
-[[]]Unable to associate a file with a mutation `file`::
-TODO
+[[fu-cant-assoc-file]]Unable to associate a file with a mutation `file`::
+-
 
-[[]] Unable to attach uploads to the transaction.::
-TODO
+[[fu-cant-attach-uploads]] Unable to attach uploads to the transaction.::
+-
 
-[[]]Incoming transaction with uploads had no files attached.::
-TODO
+[[fu-tx-has-no-files]]Incoming transaction with uploads had no files attached.::
+-
 
-[[]] Exception while converting mutation with file uploads.::
-TODO
+[[fu-mut-convert-exc]] Exception while converting mutation with file uploads.::
+-
 
 ==== form_state
 
-[[]]`(str "FORM NOT NORMALIZED: " entity-ident)`::
-TODO
-
-[[]]`(str "FORM NOT NORMALIZED: " entity-ident)`::
-TODO
+[[fs-form-not-normalized]]FORM NOT NORMALIZED: `entity-ident`::
+The value of client DB -> `<entity-ident>` -> `::fs/config` should be an ident. If it is not then you have done something wrong. See the sections under <<_form_configuration,Form Configuration>>. You should likely have used `fs/add-form-config[*]`.
 
 ==== http_remote
 
-[[]]Attempt to request alternate response from HTTP remote from multiple items in a single transaction. This could mean more than one transaction got combined into a single request.::
-TODO
+[[httpr-multiple-items]]Attempt to request alternate response from HTTP remote from multiple items in a single transaction. This could mean more than one transaction got combined into a single request.::
+-
 
-[[]]Unable to extract response from XhrIO Object `e`::
-TODO
+[[httpr-response-extract-fail]]Unable to extract response from XhrIO Object `e`::
+-
 
-[[]]Client response middleware threw an exception.  `e` . Defaulting to raw response.::
-TODO
+[[httpr-resp-middleware-exc]]Client response middleware threw an exception. `e` . Defaulting to raw response.::
+-
 
-[[]]Client middleware threw an exception `middleware-exception`::
-TODO
+[[httpr-middleware-exc]]Client middleware threw an exception `middleware-exception`::
+-
 
-[[]] Result handler for remote `url` failed with an exception.::
-TODO
+[[httpr-result-handler-exc]]Result handler for remote `url` failed with an exception.::
+-
 
-[[]] Update handler for remote `url` failed with an exception.::
-TODO
+[[httpr-update-handler-exc]]Update handler for remote `url` failed with an exception.::
+-
 
-[[]]`(ex-info "Remote Error" error)`::
-TODO
+[[httpr-remote-err]]`Remote Error::
+-
 
-[[]] Error handler for remote `url` failed with an exception.::
-TODO
+[[httpr-err-handler-exc]] Error handler for remote `url` failed with an exception.::
+-
 
-[[]] Send aborted due to middleware failure ::
-TODO
+[[httpr-send-abort]] Send aborted due to middleware failure::
+-
 
 ==== icons
 
-[[]]ui-icon was given an icon name that cannot be found:  `icon`::
-TODO
+[[icons-unknown-name]]ui-icon was given an icon name that cannot be found: `icon`::
+-
 
 ==== ident_optimized_render
 
-[[]]Query was empty. Refresh failed for  `(type c)`::
-TODO
+[[id-opt-render-empty-query]]Query was empty. Refresh failed for `(type c)`::
+-
 
 ==== indexing
 
-[[]]Component `(comp/component-name this)` supplied an invalid ident `ident` using props `props`::
-TODO
+[[idx-invalid-ident]]Component `(comp/component-name this)` supplied an invalid ident `ident` using props `props`::
+-
 
-[[]]Unable to re-index root. App was not set in the mutation env.::
-TODO
+[[idx-missing-app]]Unable to re-index root. App was not set in the mutation env.::
+-
 
 ==== inspect_client
 
-[[]]Cannot send to inspect. Channel closed.::
-TODO
+[[inspect-ch-closed]]Cannot send to inspect. Channel closed.::
+-
 
-[[]]Transact on invalid uuid `app-uuid`::
-TODO
+[[inspect-invalid-app-uuid]]Transact on invalid uuid `app-uuid`::
+-
 
-[[]]Element picker not installed in app. You must add it to you preloads.::
-TODO
+[[inspect-elm-picker-missing]]Element picker not installed in app. You must add it to you preloads.::
+Add `com.fulcrologic.fulcro.inspect.dom-picker-preload` to the `:devtools - :preloads` in your `shadow-cljs.edn` and restart shadow-cljs.
 
-[[]]Unable to find app/state for preview.::
-TODO
+[[inspect-cant-find-app]]Unable to find app/state for preview.::
+-
 
 ==== legacy_ui_routers
 
-[[]]Routing tree does not contain a vector of routing-instructions for handler  `handler`::
-TODO
+[[lur-]missing-instructions]Routing tree does not contain a vector of routing-instructions for handler  `handler`::
+-
 
-[[]]Routing tree does not contain a vector of routing-instructions for handler  `handler`::
-TODO
+[[lur-route-retried]]Route load failed for `route-to-load`. Attempting retry.::
+-
 
-[[]]`(str "Route load failed for " route-to-load ". Attempting retry.")`::
-TODO
+[[lur-route-still-loading]]Attempt to trigger a route that was pending, but that wasn't done loading (or failed to load).::
+-
 
-[[]]Attempt to trigger a route that was pending, but that wasn't done loading (or failed to load).::
-TODO
-
-[[]]Routing failed! `t`::
-TODO
+[[lur-routing-failed]]Routing failed!::
+-
 
 ==== load_cache
 
-[[]]Load failed. Using cached value.::
-TODO
+[[cache-load-failed]]Load failed. Using cached value.::
+-
 
-[[]]LOAD CACHE NOT INSTALLED! Did you remember to use `with-load-cache` on your app?::
-TODO
+[[cache-not-installed]]LOAD CACHE NOT INSTALLED! Did you remember to use `with-load-cache` on your app?::
+-
 
 ==== merge
 
-[[]] Unable to mark missing on result. Returning unmarked result::
-TODO
+[[merge-unable2mark]] Unable to mark missing on result. Returning unmarked result::
+-
 
-[[]]Cannot merge component  `component`  because it does not have an ident!::
-TODO
+[[merge-comp-missing-ident]]Cannot merge component `component`  because it does not have an ident!::
+`merge-component` requires that the component passed to it has an ident. Perhaps you wanted to use `merge!`?
 
-[[]]merge-component!: component must implement Ident. Merge skipped.::
-TODO
+[[merge-comp-missing-ident2]]merge-component!: component must implement Ident. Merge skipped.::
+`merge-component!`, just like `merge-component`, requires that the component passed to it has an ident. Perhaps you wanted to use `merge!`?
 
 ==== mock_server_remote
 
