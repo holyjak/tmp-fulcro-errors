@@ -9,6 +9,7 @@ Explanations of the Fulcro warnings errors that you might see in the browser Con
 ==== api_middleware
 
 [[err-parser-errored-on-query]]Parser threw an exception on `query`::
+-
 
 ==== application
 
@@ -223,7 +224,7 @@ Add `com.fulcrologic.fulcro.inspect.dom-picker-preload` to the `:devtools - :pre
 
 ==== legacy_ui_routers
 
-[[err-lur-]missing-instructions]Routing tree does not contain a vector of routing-instructions for handler  `handler`::
+[[err-lur-missing-instructions]]Routing tree does not contain a vector of routing-instructions for handler  `handler`::
 -
 
 [[err-lur-route-retried]]Route load failed for `route-to-load`. Attempting retry.::
