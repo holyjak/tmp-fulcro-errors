@@ -54,7 +54,7 @@ This can happen for example when you want a third-party component to render a Fu
 Check what the props produced by the middleware are. They must not be nil.
 
 [[err-comp-props-not-a-map]]Props passed to `(component-name class)` are of the type `<type>` instead of a map. Perhaps you meant to `map` the component over the props?::
-Props must be a map but isn't. Look at the code in the parent component and its props. Perhaps the value is actually a vector of maps (such as "people") and you should map this component over it?
+Props must be a map but isn't. Look at the code in the parent component and its props. Perhaps the value is actually a vector of maps (such as "people") and you should map this component over it? Or it is just the ident of the component, which happens sometimes when the data graph is not connected properly. Tip: Log the value of the props in the body of the target component to see what it is actually getting.
 
 [[err-comp-q-norm-failed]] Query normalization failed. Perhaps you tried to set a query with a syntax error?::
 -
